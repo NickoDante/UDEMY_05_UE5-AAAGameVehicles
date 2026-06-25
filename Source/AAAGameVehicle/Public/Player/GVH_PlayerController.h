@@ -37,6 +37,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void BP_Brake (const float Value);
 	
+	UFUNCTION(BlueprintImplementableEvent)
+    void BP_RotateCamera (const FVector2D& Value);
+	
 private:
 	
 	UPROPERTY(EditDefaultsOnly, Category = "GVH|Input")
@@ -54,6 +57,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "GVH|Input|Movement")
 	TObjectPtr<UInputAction> BrakeAction;
 	
+	UPROPERTY(EditDefaultsOnly, Category = "GVH|Input|Movement")
+    TObjectPtr<UInputAction> RotateCameraAction;
+	
 	void MoveForward(const FInputActionValue& Value);
 	
 	void MoveRight (const FInputActionValue& Value);
@@ -63,4 +69,6 @@ private:
 	void StopHandBrake();
 	
 	void Brake (const FInputActionValue& Value);
+	
+	void RotateCamera (const FInputActionValue& Value);
 };

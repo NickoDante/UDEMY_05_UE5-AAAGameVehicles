@@ -36,6 +36,8 @@ void AGVH_PlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(HandBrakeAction, ETriggerEvent::Completed, this, &ThisClass::StopHandBrake);
 	
 	EnhancedInputComponent->BindAction(BrakeAction, ETriggerEvent::Ongoing, this, &ThisClass::Brake);
+	
+	EnhancedInputComponent->BindAction(RotateCameraAction, ETriggerEvent::Triggered, this, &ThisClass::RotateCamera);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -69,4 +71,11 @@ void AGVH_PlayerController::Brake(const FInputActionValue& Value)
 {
 	const float BrakeValue = Value.Get<float>();
 	BP_Brake(BrakeValue);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+void AGVH_PlayerController::RotateCamera(const FInputActionValue& Value)
+{
+	const FVector2D RotationValue = Value.Get<FVector2D>();
+	BP_RotateCamera(RotationValue);
 }
